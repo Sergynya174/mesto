@@ -8,6 +8,12 @@
 
 @media screen and (max-width: 1190px){
     .elements{
+        max-width: 582px;
+    }
+}
+
+@media screen and (max-width: 864px){
+    .elements{
         max-width: 282px;
     }
 }
