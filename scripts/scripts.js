@@ -2,7 +2,6 @@ const btnClose = document.querySelector('.popup__close-btn');
 const btnSave = document.querySelector('.popup__save-btn');
 const btnEdit = document.querySelector('.profile__edit-button');
 const btnAdd = document.querySelector('.profile__add-button');
-const btnLike = document.querySelector('.elements__like');
 let popup = document.querySelector('.popup');
 const popupOpened = 'popup_opened';
 let inputName = document.querySelector('#name');

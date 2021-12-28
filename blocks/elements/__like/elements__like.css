@@ -12,7 +12,3 @@
     opacity: 0.5;
     cursor: pointer;
 }
-
-.elements__like:active{
-    background-image: url(../../../imegas/like_black.svg);
-}
