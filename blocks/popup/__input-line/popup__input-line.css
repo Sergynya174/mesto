@@ -1,0 +1,16 @@
+.popup__input-line{
+    max-width: 358px;
+    border: none;
+    margin: 0 36px 13px;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    height: 27px;
+}
+
+@media screen and (max-width: 1190px){
+    .popup__input-line{
+        max-width: 238px;
+        margin: 0 22px;
+    }
+}

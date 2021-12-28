@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='./pages/index.css'>
+    <title>Место</title>
+</head>
+<body class='page'>
+    <header class='header'>
+        <img class='header__logo' src='./imegas/logo.svg' alt='Логотип'>
+        <hr class='header__line'></hr>
+    </header>
+    <main class='content'>
+        <section class='profile'>
+            <img class='profile__avatar' src='./imegas/Jack_iv_custo.jpg' alt='Жак-Ив Кусто'>
+            <div class='profile__info'>
+                <p class='profile__title'>Жак-Ив Кусто</p>
+                <p class='profile__subtitle'>Исследователь океана</p>
+                <button class='profile__edit-button'></button>
+            </div>
+            <button class='profile__add-button'></button>
+        </section>
+        <section class='elements'>
+            <div class='elements__element'>
+                <img class='elements__photo' src='./imegas/monastir.jpg' alt='Карачаевск'>
+                <div class='elements__group'>
+                    <p class='elements__text'>Карачаевск</p>
+                    <button class='elements__like'></button>
+                </div>
+            </div>
+            <div class='elements__element'>
+                <img class='elements__photo' src='./imegas/dolina.jpg' alt='Гора Эльбрус'>
+                <div class='elements__group'>
+                    <p class='elements__text'>Гора Эльбрус</p>
+                    <button class='elements__like'></button>
+                </div>
+            </div>
+            <div class='elements__element'>
+                <img class='elements__photo' src='./imegas/gori.jpg' alt='Домбай'>
+                <div class='elements__group'>
+                    <p class='elements__text'>Домбай</p>
+                    <button class='elements__like'></button>
+                </div>
+            </div>
+            <div class='elements__element'>
+                <img class='elements__photo' src='./imegas/dolina.jpg' alt='Гора Эльбрус'>
+                <div class='elements__group'>
+                    <p class='elements__text'>Гора Эльбрус</p>
+                    <button class='elements__like'></button>
+                </div>
+            </div>
+            <div class='elements__element'>
+                <img class='elements__photo' src='./imegas/gori.jpg' alt='Домбай'>
+                <div class='elements__group'>
+                    <p class='elements__text'>Домбай</p>
+                    <button class='elements__like'></button>
+                </div>
+            </div>
+            <div class='elements__element'>
+                <img class='elements__photo' src='./imegas/monastir.jpg' alt='Карачаево-Черкессия'>
+                <div class='elements__group'>
+                    <p class='elements__text'>Карачаево-Черкессия</p>
+                    <button class='elements__like'></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class='footer'>
+        <p class='footer__copyright'>&copy; 2021 Mesto Russia</p>
+    </footer>
+    <section class='popup'>
+        <form class='popup__container'>
+            <h2 class='popup__title'>Редактировать профиль</h2>
+            <input class='popup__input-line' type='text' value='Жак-Ив Кусто' id='name'>
+            <hr class='popup__line'></hr>
+            <input class='popup__input-line' type='text' value='Исследователь океана' id='job'>
+            <hr class='popup__line'></hr>
+            <button class='popup__save-btn'>Сохранить</button>
+            <button class='popup__close-btn'></button>
+        </form>
+    </section>
+    <script src='./scripts/scripts.js'></script>
+</body>
+</html>

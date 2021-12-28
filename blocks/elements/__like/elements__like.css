@@ -1,0 +1,18 @@
+.elements__like{
+    width: 24px;
+    background-image: url(../../../imegas/like.svg);
+    background-repeat: no-repeat;
+    border: none;
+    background-color: #FFFFFF;
+    background-position: center;
+    padding: 0;
+}
+
+.elements__like:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.elements__like:active{
+    background-image: url(../../../imegas/like_black.svg);
+}
