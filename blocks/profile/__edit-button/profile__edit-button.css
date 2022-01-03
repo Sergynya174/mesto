@@ -3,17 +3,18 @@
     width: 24px;
     height: 24px;
     background-color: #000000;
-    border-color: #FFFFFF;
-    background-image: url(../../../imegas/ruchka.svg);
+    border: 1px solid #FFFFFF;
+    background-image: url(../../../imagas/ruchka.svg);
     background-repeat: no-repeat;
     box-sizing: border-box;
     background-position: center;
     grid-column: 2;
     grid-row: 1;
+    margin-top: 15px;
 }
 
 .profile__edit-button:hover{
-    opacity: 0.8;
+    opacity: 0.6;
     cursor: pointer;
 }
 

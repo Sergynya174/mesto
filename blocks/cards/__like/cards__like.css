@@ -1,6 +1,6 @@
-.elements__like{
-    width: 24px;
-    background-image: url(../../../imegas/like.svg);
+.cards__like{
+    min-width: 24px;
+    background-image: url(../../../imagas/like.svg);
     background-repeat: no-repeat;
     border: none;
     background-color: #FFFFFF;
@@ -8,7 +8,7 @@
     padding: 0;
 }
 
-.elements__like:hover{
+.cards__like:hover{
     opacity: 0.5;
     cursor: pointer;
 }
