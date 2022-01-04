@@ -3,7 +3,13 @@
     margin: 66px 0 0;
 }
 
-@media screen and (max-width: 864px){
+@media screen and (max-width: 1190px){
+    .footer{
+        margin-left: 200px;
+    }
+}
+
+@media screen and (max-width: 540px){
     .footer{
         margin: 48px 19px 0;
     }

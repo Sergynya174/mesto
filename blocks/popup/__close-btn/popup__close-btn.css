@@ -10,6 +10,7 @@
     top: -44px;
     right: -37px;
     padding: 0;
+    background-size: contain;
 }
 
 .popup__close-btn:hover{
