@@ -1,0 +1,15 @@
+.cards__remove{
+    width: 18px;
+    height: 19px;
+    background-image: url(../../../imagas/del.svg);
+    background-color: transparent;
+    position: absolute;
+    border: none;
+    right: 20px;
+    top: 20px;
+}
+
+.cards__remove:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}

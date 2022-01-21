@@ -22,62 +22,46 @@
             <button class='profile__add-button' aria-label='Добавить' type='button'></button>
         </section>
         <section class='cards'>
-            <article class='cards__card'>
-                <img class='cards__photo' src='./imagas/monastir.jpg' alt='Карачаевск'>
-                <div class='cards__group'>
-                    <h2 class='cards__text'>Карачаевск</h2>
-                    <button class='cards__like' aria-label='Нравится' type='button'></button>
-                </div>
-            </article>
-            <article class='cards__card'>
-                <img class='cards__photo' src='./imagas/dolina.jpg' alt='Гора Эльбрус'>
-                <div class='cards__group'>
-                    <h2 class='cards__text'>Гора Эльбрус</h2>
-                    <button class='cards__like' aria-label='Нравится' type='button'></button>
-                </div>
-            </article>
-            <article class='cards__card'>
-                <img class='cards__photo' src='./imagas/gori.jpg' alt='Домбай'>
-                <div class='cards__group'>
-                    <h2 class='cards__text'>Домбай</h2>
-                    <button class='cards__like' aria-label='Нравится' type='button'></button>
-                </div>
-            </article>
-            <article class='cards__card'>
-                <img class='cards__photo' src='./imagas/dolina.jpg' alt='Гора Эльбрус'>
-                <div class='cards__group'>
-                    <h2 class='cards__text'>Гора Эльбрус</h2>
-                    <button class='cards__like' aria-label='Нравится' type='button'></button>
-                </div>
-            </article>
-            <article class='cards__card'>
-                <img class='cards__photo' src='./imagas/gori.jpg' alt='Домбай'>
-                <div class='cards__group'>
-                    <h2 class='cards__text'>Домбай</h2>
-                    <button class='cards__like' aria-label='Нравится' type='button'></button>
-                </div>
-            </article>
-            <article class='cards__card'>
-                <img class='cards__photo' src='./imagas/monastir.jpg' alt='Карачаево-Черкессия'>
-                <div class='cards__group'>
-                    <h2 class='cards__text'>Карачаево-Черкессия</h2>
-                    <button class='cards__like' aria-label='Нравится' type='button'></button>
-                </div>
-            </article>
         </section>
     </main>
     <footer class='footer'>
         <p class='footer__copyright'>&copy; 2021 Mesto Russia</p>
     </footer>
-    <article class='popup'>
-        <form class='popup__container' name='form'>
+    <article class='popup' id='profile'>
+        <form class='popup__container' name='form' id='container-one'>
             <h2 class='popup__title'>Редактировать профиль</h2>
             <input class='popup__input-line' type='text' name='name' id='name' placeholder='Ваше имя'>
             <input class='popup__input-line' type='text' name='job' id='job' placeholder='Ваше занятие'>
             <button class='popup__save-btn' type='submit'>Сохранить</button>
-            <button class='popup__close-btn' aria-label='Закрыть' type='button'></button>
+            <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-one'></button>
         </form>
     </article>
+    <article class='popup' id='cards'>
+        <form class='popup__container' name='form' id='container-two'>
+            <h2 class='popup__title'>Новое место</h2>
+            <input class='popup__input-line' type='text' name='title' id='title' placeholder='Название'>
+            <input class='popup__input-line' type='text' name='link' id='link' placeholder='Ссылка на картинку'>
+            <button class='popup__save-btn' type='submit'>Создать</button>
+            <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-two'></button>
+        </form>
+    </article>
+    <article class='popup' id='img'>
+        <form class='popup__container' name='form' id='container-three'>
+            <img class='popup__img' src='' alt=''>
+            <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-three'></button>
+            <h2 class='popup__name-img'></h2>
+        </form>
+    </article>
+    <template id='cards__template'>
+        <article class='cards__card'>
+            <img class='cards__photo' src='' alt=''>
+            <div class='cards__group'>
+                <h2 class='cards__text'></h2>
+                <button class='cards__like' aria-label='Нравится' type='button'></button>
+            </div>
+            <button class='cards__remove' aria-label='Удалить' type='button'></button>
+        </article>
+    </template>
     <script src='./scripts/scripts.js'></script>
 </body>
 </html>
