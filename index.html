@@ -27,7 +27,7 @@
     <footer class='footer'>
         <p class='footer__copyright'>&copy; 2021 Mesto Russia</p>
     </footer>
-    <article class='popup' id='profile'>
+    <article class='popup' id='popup__profile'>
         <form class='popup__container' name='form' id='container-one'>
             <h2 class='popup__title'>Редактировать профиль</h2>
             <input class='popup__input-line' type='text' name='name' id='name' placeholder='Ваше имя'>
@@ -36,7 +36,7 @@
             <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-one'></button>
         </form>
     </article>
-    <article class='popup' id='cards'>
+    <article class='popup' id='popup__cards'>
         <form class='popup__container' name='form' id='container-two'>
             <h2 class='popup__title'>Новое место</h2>
             <input class='popup__input-line' type='text' name='title' id='title' placeholder='Название'>
@@ -45,9 +45,9 @@
             <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-two'></button>
         </form>
     </article>
-    <article class='popup' id='img'>
-        <form class='popup__container' name='form' id='container-three'>
-            <img class='popup__img' src='' alt=''>
+    <article class='popup' id="popup__img">
+        <form class='popup__container-img' name='form' id='container-three'>
+            <img class='popup__img' id='img' src='' alt=''>
             <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-three'></button>
             <h2 class='popup__name-img'></h2>
         </form>
