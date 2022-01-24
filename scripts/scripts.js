@@ -1,47 +1,52 @@
-const btnCloseOne = document.querySelector('#close-one');
+const btnCloseProfile = document.querySelector('#close-profile');
 const btnEdit = document.querySelector('.profile__edit-button');
 const popupOpened = 'popup_opened';
-let popupProfile = document.querySelector('#popup__profile');
-let inputName = document.querySelector('#name');
-let inputJob = document.querySelector('#job');
-let nameUser = document.querySelector('.profile__title');
-let jobUser = document.querySelector('.profile__subtitle');
-let formElementProfile = document.querySelector('#container-one');
+const popupProfile = document.querySelector('#popup__profile');
+const inputName = document.querySelector('#name');
+const inputJob = document.querySelector('#job');
+const nameUser = document.querySelector('.profile__title');
+const jobUser = document.querySelector('.profile__subtitle');
+const formElementProfile = document.querySelector('#container-one');
 
-const btnCloseTwo = document.querySelector('#close-two');
+const btnCloseCard = document.querySelector('#close-card');
 const btnAdd = document.querySelector('.profile__add-button');
-let formElementCards = document.querySelector('#container-two');
-let popupCards = document.querySelector('#popup__cards');
-let inputTitle = document.querySelector('#title');
-let inputLink = document.querySelector('#link');
+ formElementCards = document.querySelector('#container-two');
+const popupCards = document.querySelector('#popup__cards');
+const inputTitle = document.querySelector('#title');
+const inputLink = document.querySelector('#link');
 
 
-btnEdit.addEventListener('click', formAcceptHandler);
-btnCloseOne.addEventListener('click', formSubmitHandler);
+btnEdit.addEventListener('click', function(){
+  openPopup(popupProfile);
+});
 
-function openPopupProfile (){
-    popupProfile.classList.add(popupOpened);
+btnCloseProfile.addEventListener('click', function(){
+  closePopup(popupProfile);
+});
+
+function openPopup (popup){
+    popup.classList.add(popupOpened);
 }
 
-function closePopupProfile (){
-    popupProfile.classList.remove(popupOpened);
+function closePopup (popup){
+    popup.classList.remove(popupOpened);
 }
 
-function formSubmitHandler (evt){
+function handleProfileFormSubmit (evt){
     evt.preventDefault();
     nameUser.textContent = inputName.value;
     jobUser.textContent = inputJob.value;
-    closePopupProfile();
+    closePopup(popupProfile);
 }
 
-function formAcceptHandler (evt){
+function handleProfileFormAccept (evt){
     evt.preventDefault();
     inputName.value = nameUser.textContent;
     inputJob.value = jobUser.textContent;
-    openPopupProfile();
+    openPopup(popupProfile);
 }
 
-formElementProfile.addEventListener('submit', formSubmitHandler);
+formElementProfile.addEventListener('submit', handleProfileFormSubmit);
 
 
 const initialCards = [
@@ -74,27 +79,29 @@ const initialCards = [
 const cardsContainer = document.querySelector('.cards');
 const cardTemplate = document.querySelector('#cards__template').content;
 
-
-  const renderCard = (element) => {
+  function createCard (element) {
     const cardElement = cardTemplate.querySelector('.cards__card').cloneNode(true);
-    const cardImageLink =  cardElement.querySelector('.cards__photo');
+    const cardImage =  cardElement.querySelector('.cards__photo');
     const cardText = cardElement.querySelector('.cards__text');
-    const cardImageName = cardElement.querySelector('.cards__photo');
     const cardBtnRemove = cardElement.querySelector('.cards__remove');
     const cardBtnlike = cardElement.querySelector('.cards__like');
 
-    cardBtnlike.addEventListener('click', cardLikeButton);
-    cardBtnRemove.addEventListener('click', cardRemoveButton);
+    cardBtnlike.addEventListener('click', handleLikeButton);
+    cardBtnRemove.addEventListener('click', hanldeRemoveButton);
 
-    cardImageName.addEventListener('click', function() {
+    cardImage.addEventListener('click', function() {
       openFormImg(element);
-      
     })
 
-    cardImageLink.src = element.link;
+    cardImage.src = element.link;
     cardText.textContent = element.name;
-    cardImageName.alt = element.name;
+    cardImage.alt = element.name;
 
+    return cardElement;
+  };
+
+  const renderCard = (element) => {
+    const cardElement = createCard(element);
     cardsContainer.prepend(cardElement);
   }
 
@@ -102,57 +109,53 @@ const cardTemplate = document.querySelector('#cards__template').content;
     renderCard(element);
   });
 
-  function cardLikeButton(evt) {
+  function handleLikeButton(evt) {
     evt.target.classList.toggle('cards__like_black');
 }
 
-  function cardRemoveButton(evt) {
+  function hanldeRemoveButton(evt) {
     evt.target.closest('.cards__card').remove();
 }
 
-function openPopupCards(){
-  popupCards.classList.add(popupOpened);
-}
-
-function closePopupCards (){
-  popupCards.classList.remove(popupOpened);
-}
-
-
-function formAcceptCards (evt){
+function handleCardsFormSubmit (evt){
   evt.preventDefault();
   inputTitle.value = '';
   inputLink.value = '';
-  openPopupCards();
+  openPopup(popupCards);
 }
 
-function formSubmitCards (evt){
+function handleCardsFormSubmit (evt){
   evt.preventDefault();
   const card = {
     name: inputTitle.value,
     link: inputLink.value
   }
   renderCard(card);
-  closePopupCards();
+  closePopup(popupCards);
 }
 
-btnAdd.addEventListener('click', formAcceptCards);
-btnCloseTwo.addEventListener('click', formSubmitCards);
-formElementCards.addEventListener('submit', formSubmitCards);
+btnAdd.addEventListener('click', function(){
+  openPopup(popupCards);
+});
+
+btnCloseCard.addEventListener('click', function(){
+  closePopup(popupCards);
+});
+
+formElementCards.addEventListener('submit', handleCardsFormSubmit);
 
 const formElementImg = document.querySelector('#container-three');
-const btnCloseThree = document.querySelector('#close-three');
+const btnCloseImg = document.querySelector('#close-img');
 const popupImg = document.querySelector('#popup__img');
 const btnOpenImg = document.querySelector('.cards__photo');
 
-function closePopupImg (){
-  popupImg.classList.remove(popupOpened);
-}
-
-popupImg.addEventListener('click', closePopupImg)
+btnCloseImg.addEventListener('click', function(){
+  closePopup(popupImg)
+});
 
 function openFormImg (element){
   popupImg.querySelector('#img').src = element.link;
-  popupImg.querySelector('.popup__name-img').innerHTML = element.name;
+  popupImg.querySelector('.popup__name-img').textContent = element.name;
+  popupImg.querySelector('#img').alt = element.name;
   popupImg.classList.add(popupOpened);
 }
