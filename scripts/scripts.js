@@ -16,9 +16,7 @@ const inputTitle = document.querySelector('#title');
 const inputLink = document.querySelector('#link');
 
 
-btnEdit.addEventListener('click', function(){
-  openPopup(popupProfile);
-});
+btnEdit.addEventListener('click', openProfilePopup);
 
 btnCloseProfile.addEventListener('click', function(){
   closePopup(popupProfile);
@@ -132,6 +130,7 @@ function handleCardsFormSubmit (evt){
   }
   renderCard(card);
   closePopup(popupCards);
+  evt.target.reset();
 }
 
 btnAdd.addEventListener('click', function(){
