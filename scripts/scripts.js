@@ -10,7 +10,7 @@ const formElementProfile = document.querySelector('#container-one');
 
 const btnCloseCard = document.querySelector('#close-card');
 const btnAdd = document.querySelector('.profile__add-button');
- formElementCards = document.querySelector('#container-two');
+const formElementCards = document.querySelector('#container-two');
 const popupCards = document.querySelector('#popup__cards');
 const inputTitle = document.querySelector('#title');
 const inputLink = document.querySelector('#link');
@@ -39,7 +39,7 @@ function handleProfileFormSubmit (evt){
     closePopup(popupProfile);
 }
 
-function handleProfileFormAccept (evt){
+function openProfilePopup (evt){
     evt.preventDefault();
     inputName.value = nameUser.textContent;
     inputJob.value = jobUser.textContent;
@@ -87,7 +87,7 @@ const cardTemplate = document.querySelector('#cards__template').content;
     const cardBtnlike = cardElement.querySelector('.cards__like');
 
     cardBtnlike.addEventListener('click', handleLikeButton);
-    cardBtnRemove.addEventListener('click', hanldeRemoveButton);
+    cardBtnRemove.addEventListener('click', handleRemoveButton);
 
     cardImage.addEventListener('click', function() {
       openFormImg(element);
@@ -113,11 +113,11 @@ const cardTemplate = document.querySelector('#cards__template').content;
     evt.target.classList.toggle('cards__like_black');
 }
 
-  function hanldeRemoveButton(evt) {
+  function handleRemoveButton(evt) {
     evt.target.closest('.cards__card').remove();
 }
 
-function handleCardsFormSubmit (evt){
+function openCardsPopup (evt){
   evt.preventDefault();
   inputTitle.value = '';
   inputLink.value = '';
@@ -146,16 +146,19 @@ formElementCards.addEventListener('submit', handleCardsFormSubmit);
 
 const formElementImg = document.querySelector('#container-three');
 const btnCloseImg = document.querySelector('#close-img');
-const popupImg = document.querySelector('#popup__img');
 const btnOpenImg = document.querySelector('.cards__photo');
+const popupImg = document.querySelector('#popup__img');
+const popupElementImg = popupImg.querySelector('#img');
+const popupNameImg = popupImg.querySelector('.popup__name-img');
+
 
 btnCloseImg.addEventListener('click', function(){
   closePopup(popupImg)
 });
 
 function openFormImg (element){
-  popupImg.querySelector('#img').src = element.link;
-  popupImg.querySelector('.popup__name-img').textContent = element.name;
-  popupImg.querySelector('#img').alt = element.name;
-  popupImg.classList.add(popupOpened);
+  popupElementImg.src = element.link;
+  popupNameImg.textContent = element.name;
+  popupElementImg.alt = element.name;
+  openPopup(popupImg);
 }
