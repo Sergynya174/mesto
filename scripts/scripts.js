@@ -130,12 +130,9 @@ function handleCardsFormSubmit (evt){
   }
   renderCard(card);
   closePopup(popupCards);
-  evt.target.reset();
 }
 
-btnAdd.addEventListener('click', function(){
-  openPopup(popupCards);
-});
+btnAdd.addEventListener('click', openCardsPopup);
 
 btnCloseCard.addEventListener('click', function(){
   closePopup(popupCards);
