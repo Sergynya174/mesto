@@ -30,8 +30,8 @@
     <article class='popup' id='popup__profile'>
         <form class='popup__container' name='form' id='container-one'>
             <h2 class='popup__title'>Редактировать профиль</h2>
-            <input class='popup__input-line' type='text' name='name' id='name' placeholder='Ваше имя'>
-            <input class='popup__input-line' type='text' name='job' id='job' placeholder='Ваше занятие'>
+            <input class='popup__input-line' type='text' name='name' id='name' placeholder='Ваше имя' required minlength='2' maxlength='40'>
+            <input class='popup__input-line' type='text' name='job' id='job' placeholder='Ваше занятие' required minlength='2' maxlength='200'>
             <button class='popup__save-btn' type='submit'>Сохранить</button>
             <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-profile'></button>
         </form>
@@ -39,8 +39,8 @@
     <article class='popup' id='popup__cards'>
         <form class='popup__container' name='form' id='container-two'>
             <h2 class='popup__title'>Новое место</h2>
-            <input class='popup__input-line' type='text' name='title' id='title' placeholder='Название'>
-            <input class='popup__input-line' type='text' name='link' id='link' placeholder='Ссылка на картинку'>
+            <input class='popup__input-line' type='text' name='title' id='title' placeholder='Название' minlength='2' maxlength='30' required>
+            <input class='popup__input-line' type='text' name='url' id='link' placeholder='Ссылка на картинку' required>
             <button class='popup__save-btn' type='submit'>Создать</button>
             <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-card'></button>
         </form>
@@ -63,5 +63,6 @@
         </article>
     </template>
     <script src='./scripts/scripts.js'></script>
+    <script src='./scripts/validate.js'></script>
 </body>
 </html>
