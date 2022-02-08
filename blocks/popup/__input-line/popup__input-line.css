@@ -1,6 +1,6 @@
 .popup__input-line{
     max-width: 358px;
-    margin: 0 36px 30px;
+    margin: 30px 36px 0;
     font-size: 14px;
     line-height: 17px;
     font-weight: 400;
@@ -9,10 +9,11 @@
     border-left: none;
     border-right: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
+    outline: none;
 }
 
-.popup__input-line:last-of-type{
-    margin-bottom: 0;
+.popup__input-line:first-of-type{
+    margin-top: 0;
 }
 
 @media screen and (max-width: 864px){

@@ -24,10 +24,14 @@ btnCloseProfile.addEventListener('click', function(){
 
 function openPopup (popup){
     popup.classList.add(popupOpened);
+    document.addEventListener('keydown', keyHandlerEsc);
+    document.addEventListener('click', closeClickPopup);
 }
 
 function closePopup (popup){
     popup.classList.remove(popupOpened);
+    document.removeEventListener('keydown', keyHandlerEsc);
+
 }
 
 function handleProfileFormSubmit (evt){
@@ -42,6 +46,7 @@ function openProfilePopup (evt){
     inputName.value = nameUser.textContent;
     inputJob.value = jobUser.textContent;
     openPopup(popupProfile);
+    keyHandlerEsc(popupProfile);
 }
 
 formElementProfile.addEventListener('submit', handleProfileFormSubmit);
@@ -157,4 +162,18 @@ function openFormImg (element){
   popupNameImg.textContent = element.name;
   popupElementImg.alt = element.name;
   openPopup(popupImg);
+}
+
+function keyHandlerEsc(evt){
+  if(evt.key === 'Escape'){
+    const popupCloseEsc = document.querySelector('.popup_opened')
+    closePopup(popupCloseEsc)
+  }
+}
+
+function closeClickPopup(evt){
+  if(evt.target.classList.contains('popup_opened')){
+    const popupCloseOverlay = document.querySelector('.popup_opened')
+    closePopup(popupCloseOverlay)
+  }
 }
