@@ -46,7 +46,6 @@ function openProfilePopup (evt){
     inputName.value = nameUser.textContent;
     inputJob.value = jobUser.textContent;
     openPopup(popupProfile);
-    keyHandlerEsc(popupProfile);
 }
 
 formElementProfile.addEventListener('submit', handleProfileFormSubmit);
