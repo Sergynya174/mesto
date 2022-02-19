@@ -26,7 +26,7 @@
         <footer class='footer'>
             <p class='footer__copyright'>&copy; 2021 Mesto Russia</p>
         </footer>
-        <article class='popup' id='popup__profile'>
+        <div class='popup' id='popup__profile'>
             <form class='popup__container' name='profile' id='container-one' novalidate>
                 <h2 class='popup__title'>Редактировать профиль</h2>
                 <input class='popup__input-line' type='text' name='name' id='name' placeholder='Ваше имя' required minlength='2' maxlength='40'>
@@ -36,8 +36,8 @@
                 <button class='popup__save-btn' type='submit'>Сохранить</button>
                 <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-profile'></button>
             </form>
-        </article>
-        <article class='popup' id='popup__cards'>
+        </div>
+        <div class='popup' id='popup__cards'>
             <form class='popup__container' name='cards' id='container-two' novalidate>
                 <h2 class='popup__title'>Новое место</h2>
                 <input class='popup__input-line' type='text' name='title' id='title' placeholder='Название' required minlength='2' maxlength='30'>
@@ -47,23 +47,23 @@
                 <button class='popup__save-btn' type='submit'>Создать</button>
                 <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-card'></button>
             </form>
-        </article>
-        <article class='popup' id="popup__img">
+        </div>
+        <div class='popup' id="popup__img">
             <form class='popup__container-img' name='form' id='container-three' novalidate>
                 <img class='popup__img' id='img'>
                 <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-img'></button>
                 <h2 class='popup__name-img'></h2>
             </form>
-        </article>
+        </div>
         <template id='cards__template'>
-            <article class='cards__card'>
+            <div class='cards__card'>
                 <img class='cards__photo'>
                 <div class='cards__group'>
                     <h2 class='cards__text'></h2>
                     <button class='cards__like' aria-label='Нравится' type='button'></button>
                 </div>
                 <button class='cards__remove' aria-label='Удалить' type='button'></button>
-            </article>
+            </div>
         </template>
         <script src='./scripts/scripts.js'></script>
         <script src='./scripts/validate.js'></script>
