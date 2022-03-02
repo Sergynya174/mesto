@@ -20,9 +20,12 @@ export class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    this._element.querySelector('.cards__photo').src = this._link;
-    this._element.querySelector('.cards__text').textContent = this._name;
-    this._element.querySelector('.cards__text').alt = this._name;
+    this._cardImage = this._element.querySelector('.cards__photo');
+    this._cardText =this._element.querySelector('.cards__text');
+
+    this._cardImage.src = this._link;
+    this._cardText.textContent = this._name;
+    this._cardText.alt = this._name;
 
     return this._element;
   }
@@ -33,13 +36,14 @@ export class Card {
 
   _handleRemoveButton(){
     this._cardBtnRemove.closest('.cards__card').remove();
+    this._element = null;
   }
 
   _setEventListeners(){
+    this._cardImage = this._element.querySelector('.cards__photo');
+    this._cardText =this._element.querySelector('.cards__text');
     this._cardBtnlike = this._element.querySelector('.cards__like');
     this._cardBtnRemove = this._element.querySelector('.cards__remove');
-    this._cardText = this._element.querySelector('.cards__text');
-    this._cardImage =  this._element.querySelector('.cards__photo');
 
     this._cardBtnlike.addEventListener('click', () => {
       this._handleLikeButton();

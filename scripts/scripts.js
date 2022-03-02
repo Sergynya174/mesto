@@ -75,6 +75,7 @@ function openPopup (popup){
 function closePopup (popup){
   popup.classList.remove(popupOpened);
   document.removeEventListener('keydown', keyHandlerEsc);
+  document.removeEventListener('click', closeClickPopup);
 }
 
 function handleProfileFormSubmit (evt){

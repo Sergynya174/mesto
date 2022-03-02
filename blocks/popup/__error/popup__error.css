@@ -4,5 +4,6 @@
     line-height: 15px;
     color: #FF0000;
     margin: 5px auto 0 36px;
-    display: none;
+    display: block;
+    min-height: 30px;
 }
