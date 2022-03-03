@@ -25,7 +25,7 @@ export class Card {
 
     this._cardImage.src = this._link;
     this._cardText.textContent = this._name;
-    this._cardText.alt = this._name;
+    this._cardImage.alt = this._name;
 
     return this._element;
   }
