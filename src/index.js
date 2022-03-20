@@ -85,10 +85,10 @@ const handleCardClick = (evt) => {
 };
 
 const cardPopup = new PopupWithForm (popupCards, {
-  formSubmitCallBack: () => {
+  formSubmitCallBack: (data) => {
     const card = {
-      name: inputTitle.value,
-      link: inputLink.value
+      name: data.title,
+      link: data.link
     };
     renderCard(card);
     cardPopup.close()
@@ -110,10 +110,10 @@ const userInfo = new UserInfo ( {
 });
 
 btnEdit.addEventListener('click', () => {
-  profilePopup.open();
   const data = userInfo.getUserInfo();
   inputName.value = data.name;
   inputJob.value = data.job;
+  profilePopup.open();
 });
 
 btnAdd.addEventListener('click', () => {

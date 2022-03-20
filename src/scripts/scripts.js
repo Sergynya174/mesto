@@ -4,6 +4,7 @@ import Section from './Section.js';
 import PopupWithImage from './PopupWithImage.js';
 import PopupWithForm from './PopupWithForm.js';
 import UserInfo from './UserInfo.js';
+import { data } from 'autoprefixer';
 
 export const initialCards = [
   {
@@ -110,8 +111,8 @@ const profilePopup = new PopupWithForm (popupProfile, {
 
 const userInfo = new UserInfo ( {
   data: {
-    name: nameUser,
-    job: jobUser
+    name: data.name,
+    job: data.job
   }
 });
 
