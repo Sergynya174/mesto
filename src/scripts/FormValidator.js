@@ -1,10 +1,10 @@
 export class FormValidator {
   constructor(config, form){
     this._config = config;
-    this._form = form;
+    this._form = form.querySelector('.popup__container');
 
-    this._inputs = [...this._form.querySelectorAll(this._config.inputSelector)]
-    this._button = this._form.querySelector(this._config.submitButtonSelector)
+    this._inputs = [...this._form.querySelectorAll(this._config.inputSelector)];
+    this._button = this._form.querySelector(this._config.submitButtonSelector);
   }
 
   _handleSubmit(evt){
@@ -34,10 +34,11 @@ export class FormValidator {
     }
   }
 
-  _setSubmitButtonState(){  
-    this._button.disabled = !form.checkValidity()
-    this._button.classList.toggle(this._config.inactiveButtonClass, !form.checkValidity())
+  _setSubmitButtonState(){
+    this._button.disabled = !this._form.checkValidity()
+    this._button.classList.toggle(this._config.inactiveButtonClass, !this._form.checkValidity())
   }
+
 
   _setFormListeners(){    
     this._inputs.forEach(input => input.addEventListener('input', () => this._handleField(input)))

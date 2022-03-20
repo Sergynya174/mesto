@@ -1,9 +1,9 @@
 export class Card {
-  constructor(data, cardSelector, openFormImg){
+  constructor(data, cardSelector, handleCardClick){
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
-    this._openFormImg = openFormImg;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate(){
@@ -21,7 +21,7 @@ export class Card {
     this._setEventListeners();
 
     this._cardImage = this._element.querySelector('.cards__photo');
-    this._cardText =this._element.querySelector('.cards__text');
+    this._cardText = this._element.querySelector('.cards__text');
 
     this._cardImage.src = this._link;
     this._cardText.textContent = this._name;
@@ -53,8 +53,6 @@ export class Card {
       this._handleRemoveButton();
     });
 
-    this._cardImage.addEventListener('click', () => {
-      this._openFormImg(this._link, this._name);
-    });
+    this._cardImage.addEventListener('click', this._handleCardClick);
   }
 }

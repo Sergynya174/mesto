@@ -1,6 +1,6 @@
 .cards__like{
     min-width: 24px;
-    background-image: url(../../../imagas/like.svg);
+    background-image: url(../../../src/images/like.svg);
     background-repeat: no-repeat;
     border: none;
     background-color: #FFFFFF;

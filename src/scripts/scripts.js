@@ -1,7 +1,11 @@
 import {FormValidator} from './FormValidator.js'
 import {Card} from './Card.js'
+import Section from './Section.js';
+import PopupWithImage from './PopupWithImage.js';
+import PopupWithForm from './PopupWithForm.js';
+import UserInfo from './UserInfo.js';
 
-const initialCards = [
+export const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -63,104 +67,69 @@ const popupNameImg = popupImg.querySelector('.popup__name-img');
 const popupProfileValid = new FormValidator(formsValidationConfig, popupProfile);
 const popupCardsValid = new FormValidator(formsValidationConfig, popupCards);
 
-popupProfileValid.enableValidation();
-popupCardsValid.enableValidation();
-
-function openPopup (popup){
-  popup.classList.add(popupOpened);
-  document.addEventListener('keydown', keyHandlerEsc);
-  document.addEventListener('click', closeClickPopup);
-}
-
-function closePopup (popup){
-  popup.classList.remove(popupOpened);
-  document.removeEventListener('keydown', keyHandlerEsc);
-  document.removeEventListener('click', closeClickPopup);
-}
-
-function handleProfileFormSubmit (evt){
-  evt.preventDefault();
-  nameUser.textContent = inputName.value;
-  jobUser.textContent = inputJob.value;
-  closePopup(popupProfile);
-}
-
-function openProfilePopup (evt){
-  evt.preventDefault();
-  inputName.value = nameUser.textContent;
-  inputJob.value = jobUser.textContent;
-  openPopup(popupProfile);
-}
-
-function openFormImg (link, name){
-  popupElementImg.src = link;
-  popupNameImg.textContent = name;
-  popupElementImg.alt = name;
-  openPopup(popupImg);
-}
-
-function createCard (element) {
-  const card = new Card(element, '#cards__template', openFormImg)
+const createCard = (item) => { 
+  const card = new Card(item, '#cards__template', handleCardClick)
   const cardElement = card.generateCard();
-
   return cardElement;
+}
+
+const renderCard = (item) => {
+  const card = createCard(item);
+  defaultCard.addItem(card);
+}
+
+const defaultCard = new Section({items: initialCards, renderer: renderCard}, cardsContainer);
+
+const popupWithImage = new PopupWithImage (popupImg);
+
+const handleCardClick = (evt) => {
+  const data = {
+    name: evt.target.alt,
+    link: evt.target.src
+  }
+  popupWithImage.open(data);
 };
 
-function openCardsPopup (evt){
-  evt.preventDefault();
-  inputTitle.value = '';
-  inputLink.value = '';
-  openPopup(popupCards);
-}
+const cardPopup = new PopupWithForm (popupCards, {
+  formSubmitCallBack: () => {
+    const card = {
+      name: inputTitle.value,
+      link: inputLink.value
+    };
+    renderCard(card);
+    cardPopup.close()
+  } 
+});
 
-function handleCardsFormSubmit (evt){
-  evt.preventDefault();
-  const card = {
-    name: inputTitle.value,
-    link: inputLink.value
+const profilePopup = new PopupWithForm (popupProfile, {
+  formSubmitCallBack: (data) => {
+    userInfo.setUserInfo(data);
+    profilePopup.close();
   }
-  renderCard(card);
-  closePopup(popupCards);
-}
+});
 
-function keyHandlerEsc(evt){
-  if(evt.key === 'Escape'){
-    const popupCloseEsc = document.querySelector('.popup_opened')
-    closePopup(popupCloseEsc)
+const userInfo = new UserInfo ( {
+  data: {
+    name: nameUser,
+    job: jobUser
   }
-}
-
-function closeClickPopup(evt){
-  if(evt.target.classList.contains('popup_opened')){
-    const popupCloseOverlay = document.querySelector('.popup_opened')
-    closePopup(popupCloseOverlay)
-  }
-}
-
-const renderCard = (element) => {
-  const cardElement = createCard(element);
-  cardsContainer.prepend(cardElement);
-}
-
-initialCards.forEach(element => {
-  renderCard(element);
 });
 
-btnEdit.addEventListener('click', openProfilePopup);
-
-btnCloseProfile.addEventListener('click', function(){
-  closePopup(popupProfile);
+btnEdit.addEventListener('click', () => {
+  profilePopup.open();
+  const data = userInfo.getUserInfo();
+  inputName.value = data.name;
+  inputJob.value = data.job;
 });
 
-btnAdd.addEventListener('click', openCardsPopup);
-
-btnCloseCard.addEventListener('click', function(){
-  closePopup(popupCards);
+btnAdd.addEventListener('click', () => {
+  cardPopup.open();
 });
 
-btnCloseImg.addEventListener('click', function(){
-  closePopup(popupImg);
-});
+defaultCard.renderCard();
+popupProfileValid.enableValidation();
 
-formElementCards.addEventListener('submit', handleCardsFormSubmit);
-formElementProfile.addEventListener('submit', handleProfileFormSubmit);
+popupCardsValid.enableValidation();
+popupWithImage.setEventListeners();
+cardPopup.setEventListeners();
+profilePopup.setEventListeners();
