@@ -52,8 +52,6 @@ const jobUser = document.querySelector('.profile__subtitle');
 
 const btnAdd = document.querySelector('.profile__add-button');
 const popupCards = document.querySelector('#popup__cards');
-const inputTitle = document.querySelector('#title');
-const inputLink = document.querySelector('#link');
 
 const cardsContainer = document.querySelector('.cards');
 const popupImg = document.querySelector('#popup__img');

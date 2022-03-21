@@ -13,7 +13,7 @@ export default class PopupWithForm extends Popup {
         evt.preventDefault();
         this._formSubmitCallBack(this._getInputValues());
         this._form.reset();
-      }
+    }
 
     _getInputValues(){
         const data = {};
