@@ -74,16 +74,16 @@ const defaultCard = new Section({items: initialCards, renderer: renderCard}, car
 
 const popupWithImage = new PopupWithImage (popupImg);
 
-const handleCardClick = (evt) => {
+const handleCardClick = (name, link) => {
   const data = {
     name: evt.target.alt,
     link: evt.target.src
   }
-  popupWithImage.open(data);
+  popupWithImage.open(name, link);
 };
 
 const cardPopup = new PopupWithForm (popupCards, {
-  formSubmitCallBack: (data) => {
+  formSubmitCallBack: (name, link) => {
     const card = {
       name: data.title,
       link: data.link
