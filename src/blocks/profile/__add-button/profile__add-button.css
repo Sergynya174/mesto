@@ -3,7 +3,7 @@
     width: 150px;
     height: 50px;
     background-color: #000000;
-    background-image: url(../../../src/images/crestic.svg);
+    background-image: url(../../../images/crestic.svg);
     grid-column: 3;
     background-repeat: no-repeat;
     background-position: center;

@@ -1,11 +1,11 @@
 .cards__like{
     min-width: 24px;
-    background-image: url(../../../src/images/like.svg);
+    background-image: url(../../../images/like.svg);
     background-repeat: no-repeat;
     border: none;
     background-color: #FFFFFF;
     background-position: center;
-    padding: 0;
+    padding: 11px;
 }
 
 .cards__like:hover{

@@ -11,10 +11,13 @@
         </header>
         <main class='content'>
             <section class='profile'>
-                <img class='profile__avatar' src="<%=require('./images/Jack_iv_custo.jpg')%>" alt='Аватарка'>
+                <div class= 'profile__avatar-conteiner'>
+                    <img class='profile__avatar' src="<%=require('./images/Jack_iv_custo.jpg')%>" alt='Аватарка'>
+                    <button class= 'profile__avatar-button' type= 'button'></button>
+                </div>
                 <div class='profile__info'>
-                    <h1 class='profile__title'>Жак-Ив Кусто</h1>
-                    <p class='profile__subtitle'>Исследователь океана</p>
+                    <h1 class='profile__title'></h1>
+                    <p class='profile__subtitle'></p>
                     <button class='profile__edit-button' aria-label='Редактировать' type='button'></button>
                 </div>
                 <button class='profile__add-button' aria-label='Добавить' type='button'></button>
@@ -30,7 +33,7 @@
                 <h2 class='popup__title'>Редактировать профиль</h2>
                 <input class='popup__input-line' type='text' name='name' id='name' placeholder='Ваше имя' required minlength='2' maxlength='40'>
                 <span class='popup__error' id='name-error'></span>
-                <input class='popup__input-line' type='text' name='job' id='job' placeholder='Ваше занятие' required minlength='2' maxlength='200'>
+                <input class='popup__input-line' type='text' name='about' id='job' placeholder='Ваше занятие' required minlength='2' maxlength='200'>
                 <span class='popup__error' id='job-error'></span>
                 <button class='popup__save-btn' type='submit'>Сохранить</button>
                 <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-profile'></button>
@@ -47,11 +50,27 @@
                 <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-card'></button>
             </form>
         </div>
-        <div class='popup' id="popup__img">
-            <form class='popup__container-img' name='form' id='container-three' novalidate>
+        <div class='popup' id='popup__img'>
+            <form class='popup__container-img' name='img' id='container-three' novalidate>
                 <img class='popup__img' id='img'>
                 <button class='popup__close-btn' aria-label='Закрыть' type='button' id='close-img'></button>
                 <h2 class='popup__name-img'></h2>
+            </form>
+        </div>
+        <div class='popup' id='popup__avatar'>
+            <form class='popup__container' name='avatar' novalidate>
+                <h2 class='popup__title'>Обновить аватар</h2>
+                <input class='popup__input-line' type='url' name='url' id='avatar' placeholder='Ссылка на фото' required>
+                <span class='popup__error' id='avatar-error'></span>
+                <button class='popup__save-btn' type='submit'>Сохранить</button>
+                <button class='popup__close-btn' aria-label='Закрыть' type='button'></button>
+            </form>
+        </div>
+        <div class='popup' id='popup__delete'>
+            <form class='popup__container' name='delete' novalidate>
+                <h2 class='popup__title'>Вы уверены?</h2>
+                <button class='popup__save-btn' type='submit'>Да</button>
+                <button class='popup__close-btn' aria-label='Закрыть' type='button'></button>
             </form>
         </div>
         <template id='cards__template'>
@@ -59,7 +78,10 @@
                 <img class='cards__photo'>
                 <div class='cards__group'>
                     <h2 class='cards__text'></h2>
-                    <button class='cards__like' aria-label='Нравится' type='button'></button>
+                    <div class='cards__like-conteiner'>
+                        <button class='cards__like' aria-label='Нравится' type='button'></button>
+                        <span class= 'cards__like-count'></span>
+                    </div>
                 </div>
                 <button class='cards__remove' aria-label='Удалить' type='button'></button>
             </div>
