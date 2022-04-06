@@ -46,8 +46,6 @@ const formsValidationConfig = {
 
 const btnEdit = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('#popup__profile');
-const inputName = document.querySelector('#name');
-const inputJob = document.querySelector('#job');
 const nameUser = document.querySelector('.profile__title');
 const jobUser = document.querySelector('.profile__subtitle');
 
@@ -71,7 +69,9 @@ const popupAvatarValid = new FormValidator(formsValidationConfig, popupAvatar);
 api.getProfile().then(userData => {
   userId = userData._id;
   userInfo.setUserInfo(userData);
-});
+}).catch(err => {
+  console.log(err)
+})
 
 const renderCard = (item) => {
   const card = createCard(item);
@@ -108,24 +108,19 @@ const createCard = (item) => {
 
 api.getCards().then(cards => {
   defaultCard.renderCard(cards);
-});
+}).catch(err => {
+  console.log(err)
+})
 
-const popupWithImage = new PopupWithImage (popupImg);
-
-const handleCardClick = (item) => {
+const handleCardClick = (evt) => {
   const data = {
-    name: item.link,
-    link: item.name,
-    id: item._id,
-    ownerId: item.ownerId,
-    likes: item.likes,
-    userId: userId
+    name: evt.target.alt,
+    link: evt.target.src
   }
   popupWithImage.open(data);
 };
 
-const cardPopup = new PopupWithForm (popupCards, {
-  formSubmitCallBack: (cardData) => {
+const cardPopup = new PopupWithForm (popupCards, (cardData) => {
     cardPopup.renderLoading(true)
     api.addCard(cardData).then(data => {
       const card = {
@@ -144,10 +139,10 @@ const cardPopup = new PopupWithForm (popupCards, {
       cardPopup.renderLoading(false)
     })
   }
-});
+);
 
-const profilePopup = new PopupWithForm (popupProfile, {
-  formSubmitCallBack: (userData) => {
+const profilePopup = new PopupWithForm (popupProfile,
+  (userData) => {
     profilePopup.renderLoading(true);
     api.editProfile(userData).then(data => {
       userInfo.setUserInfo(data);
@@ -158,7 +153,7 @@ const profilePopup = new PopupWithForm (popupProfile, {
       profilePopup.renderLoading(false);
     })
   }
-});
+);
 
 const userInfo = new UserInfo ( {
   data: {
@@ -168,8 +163,10 @@ const userInfo = new UserInfo ( {
   }
 });
 
-const avatarPopup = new PopupWithForm (popupAvatar, {
-  formSubmitCallBack: (userData) => {
+const popupWithImage = new PopupWithImage (popupImg);
+
+const avatarPopup = new PopupWithForm (popupAvatar, 
+  (userData) => {
     avatarPopup.renderLoading(true)
     api.addAvatar(userData).then(data => {
       userInfo.setUserAvatar(data);
@@ -180,26 +177,12 @@ const avatarPopup = new PopupWithForm (popupAvatar, {
       avatarPopup.renderLoading(false)
     })
   }
-});
+);
 
-const deletePopup = new PopupWithForm (popupDelete, {
-  formSubmitCallBack: (userData) => {
-    deletePopup.renderLoading(true)
-    api.addLike(userData).then(data => {
-      userInfo.setUserAvatar(data);
-      deletePopup.close();
-    }).catch(err => {
-      console.log(err)
-    }).finally(() => {
-      deletePopup.renderLoading(false)
-    })
-  }
+const deletePopup = new PopupWithForm (popupDelete, () => {
 });
 
 btnEdit.addEventListener('click', () => {
-  const data = userInfo.getUserInfo();
-  inputName.value = data.name;
-  inputJob.value = data.about;
   profilePopup.open();
 });
 

@@ -3,36 +3,25 @@ class Api {
         this._options = options;
     }
 
+    _getResponseData(res) {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    }
+
     getProfile() {
         return fetch(`${this._options.url}/users/me`, {
             method: 'GET',
             headers: this._options.headers
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        }).then((obj) => {
-            return obj;
-        }).catch((err) => {
-            console.error(err);
-        })
+        }).then(this._getResponseData);
     }
     
     getCards() {
         return fetch(`${this._options.url}/cards`, {
             method: 'GET',
             headers: this._options.headers
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        }).then((obj) => {
-            return obj;
-        }).catch((err) => {
-            console.error(err);
-        })
+        }).then(this._getResponseData);
     }
     
     editProfile(userData) {
@@ -43,16 +32,7 @@ class Api {
                 name: userData.name,
                 about: userData.about
             })
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        }).then((obj) => {
-            return obj;
-        }).catch((err) => {
-            console.error(err);
-        })
+        }).then(this._getResponseData);
     }
 
     addCard(data) {
@@ -63,64 +43,28 @@ class Api {
                 name: data.title,
                 link: data.link
             })
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        }).then((obj) => {
-            return obj;
-        }).catch((err) => {
-            console.error(err);
-        })
+        }).then(this._getResponseData);
     }
 
     deleteCard(id) {
         return fetch(`${this._options.url}/cards/${id}`, {
             method: 'DELETE',
             headers: this._options.headers
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        }).then((obj) => {
-            return obj;
-        }).catch((err) => {
-            console.error(err);
-        })
+        }).then(this._getResponseData);
     }
 
     addLike(id) {
         return fetch(`${this._options.url}/cards/${id}/likes`, {
             method: 'PUT',
             headers: this._options.headers
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        }).then((obj) => {
-            return obj;
-        }).catch((err) => {
-            console.error(err);
-        })
+        }).then(this._getResponseData);
     }
 
     deleteLike(id) {
         return fetch(`${this._options.url}/cards/${id}/likes`, {
             method: 'DELETE',
             headers: this._options.headers
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        }).then((obj) => {
-            return obj;
-        }).catch((err) => {
-            console.error(err);
-        })
+        }).then(this._getResponseData);
     }
 
     addAvatar(data) {
@@ -130,16 +74,7 @@ class Api {
             body: JSON.stringify({
                 avatar: data.url
             })
-        }).then((res) => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        }).then((obj) => {
-            return obj;
-        }).catch((err) => {
-            console.log(err);
-        })
+        }).then(this._getResponseData);
     }
 }
 

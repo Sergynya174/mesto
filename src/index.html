@@ -12,7 +12,7 @@
         <main class='content'>
             <section class='profile'>
                 <div class= 'profile__avatar-conteiner'>
-                    <img class='profile__avatar' src="<%=require('./images/Jack_iv_custo.jpg')%>" alt='Аватарка'>
+                    <img class='profile__avatar' alt='Аватарка'>
                     <button class= 'profile__avatar-button' type= 'button'></button>
                 </div>
                 <div class='profile__info'>
@@ -75,10 +75,12 @@
         </div>
         <template id='cards__template'>
             <div class='cards__card'>
-                <img class='cards__photo'>
+                <div class='cards__photo-container'>
+                    <img class='cards__photo'>
+                </div>
                 <div class='cards__group'>
                     <h2 class='cards__text'></h2>
-                    <div class='cards__like-conteiner'>
+                    <div class='cards__like-container'>
                         <button class='cards__like' aria-label='Нравится' type='button'></button>
                         <span class= 'cards__like-count'></span>
                     </div>

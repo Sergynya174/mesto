@@ -39,7 +39,6 @@ export class FormValidator {
     this._button.classList.toggle(this._config.inactiveButtonClass, !this._form.checkValidity())
   }
 
-
   _setFormListeners(){    
     this._inputs.forEach(input => input.addEventListener('input', () => this._handleField(input)))
       

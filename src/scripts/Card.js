@@ -1,4 +1,4 @@
-import {userId} from '../index.js'
+import {userId} from '../index.js';
 
 export class Card {
   constructor(data, cardSelector, handleCardClick, handleDeleteClick, handelLakeClick){
@@ -7,7 +7,7 @@ export class Card {
     this._likes = data.likes;
     this._id = data._id;
     this._userId = userId;
-    this._ownerId = data.ownerId;
+    this._ownerId = data.owner._id
 
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
@@ -67,7 +67,7 @@ export class Card {
   }
 
   handleRemoveButton(){
-    this._cardBtnRemove.remove();
+    this._element.remove();
     this._element = null;
   }
 
