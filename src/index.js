@@ -88,6 +88,9 @@ const createCard = (item) => {
       api.deleteCard(id).then(res => {
         card.handleRemoveButton()
         deletePopup.close()
+        })
+        .catch(err => {
+          console.log(err);
       })
     })
   },
@@ -127,6 +130,7 @@ const cardPopup = new PopupWithForm (popupCards, (cardData) => {
       renderCard(data);
       cardPopup.close();
       popupCardsValid.setSubmitButtonState();
+      defaultCard.addNewItem(createCard(data));
     }).catch(err => {
       console.log(err);
     }).finally(() => {
