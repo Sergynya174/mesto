@@ -81,7 +81,8 @@ const renderCard = (item) => {
 const defaultCard = new Section({renderer: renderCard}, cardsContainer);
 
 const createCard = (item) => {
-  const card = new Card(item, '#cards__template', handleCardClick, (id) => {
+  const card = new Card(item, '#cards__template', handleCardClick, 
+  (id) => {
     deletePopup.open()
     deletePopup.changeSubmitHandler(() => {
       api.deleteCard(id).then(res => {
@@ -123,16 +124,9 @@ const handleCardClick = (evt) => {
 const cardPopup = new PopupWithForm (popupCards, (cardData) => {
     cardPopup.renderLoading(true)
     api.addCard(cardData).then(data => {
-      const card = {
-        name: data.name,
-        link: data.link,
-        likes: data.likes,
-        id: data._id,
-        userId: userId,
-        ownerId: data.owner._id
-      };
-      renderCard(card);
-      cardPopup.close()
+      renderCard(data);
+      cardPopup.close();
+      popupCardsValid.setSubmitButtonState();
     }).catch(err => {
       console.log(err);
     }).finally(() => {
@@ -147,6 +141,7 @@ const profilePopup = new PopupWithForm (popupProfile,
     api.editProfile(userData).then(data => {
       userInfo.setUserInfo(data);
       profilePopup.close();
+      popupProfileValid.setSubmitButtonState();
     }).catch(err => {
       console.log(err);
     }).finally(() => {
@@ -171,6 +166,7 @@ const avatarPopup = new PopupWithForm (popupAvatar,
     api.addAvatar(userData).then(data => {
       userInfo.setUserAvatar(data);
       avatarPopup.close();
+      popupAvatarValid.setSubmitButtonState();
     }).catch(err => {
       console.log(err)
     }).finally(() => {
