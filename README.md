@@ -37,7 +37,7 @@
 
 ## Инструкция для работы с проектом:
 ```
-git clone git@github.com:Sergynya174/mesto.git
+git clone https://github.com/Sergynya174/mesto.git
 cd mesto
 npm i webpack --save-dev
 npm run build
