@@ -35,4 +35,13 @@
 * Псевдоклассы
 * Webpack
 
+## Инструкция для работы с проектом:
+```
+git clone 
+cd mesto
+npm i webpack --save-dev
+npm run build
+npm run dev
+```
+
 ### [Ссылка проекта](https://sergynya174.github.io/mesto/)
