@@ -8,33 +8,6 @@ import PopupWithForm from './scripts/PopupWithForm.js';
 import UserInfo from './scripts/UserInfo.js';
 import {api} from './scripts/Api.js';
 
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const formsValidationConfig = {
   formSelector: '.popup__container',
   inputSelector: '.popup__input-line',
@@ -98,10 +71,14 @@ const createCard = (item) => {
     if(card.isLiked()) {
       api.deleteLike(id).then(res => {
         card.setLikes(res.likes)
+      }).catch(err => {
+        console.log(err);
       })
     } else {
       api.addLike(id).then(res => {
         card.setLikes(res.likes)
+      }).catch(err => {
+        console.log(err);
       })
     }
   }
